@@ -1,0 +1,24 @@
+
+<body>
+  <div class="center">
+    <h3 class="titulo-2">Inicio Sesión</h3>
+    <form (ngSubmit)="login()">
+      <div class="txt_field">
+        <input type="text" class="" id="usuario" [(ngModel)]="usuario" name="usuario" required>
+        <span></span>
+        <label for="usuario">*Usuario</label>
+      </div>
+      <div class="txt_field">
+        <input type="password" class="" id="contrasena" [(ngModel)]="contrasena" name="contrasena" required>
+        <span></span>
+        <label for="contrasena">*Contraseña</label>
+      </div>
+      <div class="pass">olvidó la contraseña?</div>
+      <button type="submit" class="btn-iniciar">Login</button>
+      <div *ngIf="error" class="alert alert-danger mt-2">{{ error }}</div>
+      <div class="signup_link">
+        no eres miembro <a href="#">Registrate</a>
+      </div>
+    </form>
+  </div>
+</body>

@@ -1,0 +1,38 @@
+.contenedor-cards{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+.tres-cards{
+    display: flex;
+    flex-direction: column;
+}
+.card-gris{
+    /* width: 40%; */
+    height: auto;
+    background: #fafafa;
+    margin:5px;
+    margin-left: 60px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.card-factura{
+    /* width: 40%; */
+    height: auto;
+    /* background: #d0ecda; */
+    /* margin: 15px; */
+    margin-left: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.seccion{
+    display: flex;
+    /* width:70%; */
+    align-items: center;
+    justify-content: center;
+}
+.titulo-seccion{
+    margin: 0px 0px 0px 15px;
+    align-items: center;
+}

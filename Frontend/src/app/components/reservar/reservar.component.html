@@ -1,0 +1,221 @@
+<!-- <navbar></navbar> -->
+<div>
+    <p class="titulo-2">Realizar reserva</p>
+</div>
+<div class="formulario animate__animated animate__bounceInDown">
+    <div class="d-flex">
+        <div class="tres-cards">
+
+            <div class="card-gris">
+                <div class="titulo-seccion d-flex justify-content-center">
+                    <i class="fa-solid fa-location-dot fa-sm" style="color: #2c66c9;"></i>
+                    <h4 class="subtitulo mx-3">Datos del lugar</h4>
+                </div>
+                <div class="seccion">
+                    <select class="form-select mx-3" aria-label="Default select example">
+                        @for (centro of centros; track $index) {
+                            <option value="">{{centro.nombre}}</option>
+                        }
+                        
+                    </select>
+                    <select class="form-select" aria-label="Default select example">
+                        @for (infra of infraestructuras; track $index) {
+                        <option value="">{{infra.nombre}}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-gris">
+                <div class="titulo-seccion d-flex justify-content-center">
+                    <i class="fa-solid fa-calendar-days fa-sm" style="color: #2c66c9;"></i>
+                    <h4 class="subtitulo mx-3">Fechas</h4>
+                </div>
+                <div class="seccion">
+                    <div class="form-group mx-3">
+                        <label for="fechaInicio">Fecha Inicio</label>
+                        <input type="date" class="form-control" id="fechaInicio"
+                            placeholder="Seleccione fecha de inicio">
+                    </div>
+                    <div class="form-group mx-3">
+                        <label for="fechaFin">Fecha Fin</label>
+                        <input type="date" class="form-control" id="fechaFin" placeholder="Seleccione fecha de fin">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- datos de la persona que reserva -->
+            <div class="card-gris">
+                <div class="titulo-seccion d-flex justify-content-center ">
+                    <i class="fa-solid fa-person-half-dress fa-lg" style="color: #2c66c9;"></i>
+                    <h4 class="subtitulo mx-3">Datos de la persona</h4>
+                </div>
+                <div class="seccion">
+                    <form class="" #customerForm="ngForm">
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="mb-3">
+                                    <input placeholder="Documento" name="documento" type="text" class="form-control"
+                                        [(ngModel)]="documento" required minlength="5" #document="ngModel">
+                                </div>
+                                @if(document.invalid && (document.dirty || document.touched)) {
+                                @if(document.errors!['required']) {
+                                <p class="text-danger">Documento requerido</p>
+                                }
+                                @if(document.errors!['minlength']) {
+                                <p class="text-danger">Formato de documento invalido</p>
+                                }
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <select class="form-select  mb-3" aria-label="Default select example">
+                                    <option selected>Tipo de usuario</option>
+                                    <option value="1">One</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <select class="form-select  mb-3" aria-label="Default select example">
+                                    <option selected>Categoria</option>
+                                    @for (categoria of categorias; track $index) {
+                                        <option value="">{{categoria.nombre}}</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <input placeholder="nombre" name="firstName" type="text" class="form-control"
+                                        [(ngModel)]="nombre" required minlength="5" #name="ngModel">
+                                </div>
+    
+                                @if(name.invalid && (name.dirty|| name.touched)){
+                                @if(name.errors!['required']){
+                                <p class="text-danger">Nombre requerido</p>
+                                }
+                                @if(name.errors!['minlength']){
+                                <p class="text-danger">Nombre debe tener minimo 5 caracteres</p>
+                                }
+                                }
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <input placeholder="apellido" name="apellido" type="text" class="form-control"
+                                        [(ngModel)]="apellido" required minlength="3" #lastname="ngModel">
+                                </div>
+
+                                @if(lastname.invalid && (lastname.dirty|| lastname.touched)){
+                                @if(lastname.errors!['required']){
+                                <p class="text-danger">apellido requerido</p>
+                                }
+                                @if(lastname.errors!['minlength']){
+                                <p class="text-danger">Apellidp muy corto</p>
+                                }
+                                }
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <input placeholder="direccion" name="direccion" type="text" class="form-control"
+                                        [(ngModel)]="direccion" required minlength="5" #address="ngModel">
+                                </div>
+    
+                                @if(address.invalid && (address.dirty || address.touched)) {
+                                @if(address.errors!['required']) {
+                                <p class="text-danger">Direccion requerida</p>
+                                }
+                                @if(address.errors!['minlength']) {
+                                <p class="text-danger">Direccion muy corta</p>
+                                }
+                                }
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <input placeholder="telefono" name="telefono" type="text" class="form-control"
+                                        [(ngModel)]="telefono" required minlength="5" #phone="ngModel">
+                                </div>
+    
+                                @if(phone.invalid && (phone.dirty || phone.touched)) {
+                                @if(phone.errors!['required']) {
+                                <p class="text-danger">Telefono requerido</p>
+                                }
+                                @if(phone.errors!['minlength']) {
+                                <p class="text-danger">Formato de telefono invalido</p>
+                                }
+                                }
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success" [disabled]="customerForm.invalid">+ Crear
+                            Reserva</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!-- Factura -->
+        <div class="card-factura">
+            <div class="container mt-2 mb-5">
+                <div class="card shadow-lg p-4">
+                    <!-- Header -->
+                    <div class="row mb-1">
+                        <div class="col-md-6">
+                            <h3 class="fw-bold">Factura</h3>
+                            <p class="text-muted">ID: 12345</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <img src="https://via.placeholder.com/150x50" alt="Logo Empresa" class="img-fluid">
+                        </div>
+                    </div>
+
+                    <!-- Información general -->
+                    <div class="row mb-1">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Fecha de emisión</h6>
+                            <p>08/10/2024</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <h6 class="fw-bold">Reserva</h6>
+                            <p>Centro: Centro Recreativo Comfacauca</p>
+                            <p>Infraestructura: Piscina</p>
+                            <p>Usuario: Juan Pérez</p>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de items -->
+                    <div class="table-responsive mb-2">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <th class="text-end">Precio</th>
+                                    <th class="text-end">Descuento</th>
+                                    <th class="text-end">Monto Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Reserva de Piscina</td>
+                                    <td class="text-end">$100.00</td>
+                                    <td class="text-end">10%</td>
+                                    <td class="text-end">$90.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Total final -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="text-muted">Gracias por su preferencia.</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <h5>Total a pagar: <strong>$90.00</strong></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

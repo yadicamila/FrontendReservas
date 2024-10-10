@@ -1,6 +1,13 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideHttpClient } from '@angular/common/http'; // Nueva forma en Angular 17
 import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(),  // La nueva forma de proporcionar HttpClient
+    provideRouter(routes), provideAnimationsAsync(),
+  ]
+}).catch(err => console.error(err));

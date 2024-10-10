@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+
+
+
+:root {
+    --color_primario:#077061;
+    --color_primario_suave: #116d8083;
+     --fondo_oscuro:#13161c; 
+    /* --fondo_oscuro:#e7eaef; */
+
+
+    --fondo_claro:#1e2229; 
+    /* --fondo_claro:#d4d8e0; */
+
+    --color_blanco: #fff;
+    --altura_header: 50px;
+    --padding_left_right: 2rem;
+    --ancho_maximo: 1200px;
+    --color_verde:#3757c0;
+    --color_negro:#121212;
+
+    --tamaño_titulo:25px;
+    --tamaño_subtitulo:15px;
+
+
+}
+.titulo-principal {
+    text-align: center;
+    padding-top: 25px;
+    color: var(--color_blanco);
+    font-size: var(--tamaño_titulo);
+}
+.titulo-2 {
+    
+    text-align: center;
+    padding-top: 15px;
+    color: #5d5e5f;
+    font-size: var(--tamaño_titulo);
+    font-weight: bold;
+}
+.subtitulo{
+    text-align: center;
+    /* padding-top: 10px; */
+    color: #7d7e7f;
+    font-size: var(--tamaño_subtitulo)!important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

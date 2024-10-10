@@ -1,0 +1,52 @@
+
+<div class="container mt-4">
+    <div>
+        <p class="titulo-2">Reservaciones realizadas</p>
+    </div>
+    <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-success"  [routerLink]="['/reservar']"> + Añadir Reserva</button>
+    </div>
+    @if (reservas.length>0) {
+
+        <table class="table table-hover animate__animated animate__bounceInDown mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Usuario</th>
+                <th scope="col">Fecha de resrva</th>
+                <th scope="col">Fecha inicio</th>
+                <th scope="col">fecha fin</th>
+                <th scope="col">Centro Recreativo</th>
+                <th scope="col">Infraestructura</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
+
+              </tr>
+            </thead>
+            <tbody>
+                @for (reserva of reservas; track $index) { 
+              <tr>
+                <td>{{reserva.usuario.nombre}} {{reserva.usuario.apellido}}</td>
+                <td>{{reserva.fechaReserva}}</td>
+                <td>{{reserva.fechaInicio}}</td>
+                <td>{{reserva.fechaFin}}</td>
+                <td>{{reserva.infraestructura.centroRecreativo.nombre}}</td>
+                <td>{{reserva.infraestructura.nombre}}</td>
+                <td>{{reserva.estado}}</td>
+                <td>
+                    <button class="btn btn-outline-danger btn-sm m-2" (click)="deleteReserva(reserva.idReserva)"><i class="fa-solid fa-trash"></i></button>
+                    <button class="btn btn-outline-info btn-sm m-2"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-file-invoice-dollar"></i></button>
+                </td>
+              </tr>
+            }
+            </tbody>
+        </table>
+    }
+    @else {
+        <div class="alert alert-warning">No hay datos</div>
+    }
+</div>
+<modal-factura [reservas]="reservas"></modal-factura>
+
+
+
